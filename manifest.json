@@ -1,0 +1,35 @@
+{
+    "name": "Stoppy",
+    "version": "1.0",
+    "description": "Pause YouTube video when changing tabs.",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "./scripts/background.js"
+    },
+    "icons": {
+        "16": "./assets/pauser_16.png",
+        "32": "./assets/pauser_32.png",
+        "48": "./assets/pauser_48.png"
+    },
+    "permissions": [
+        "tabs",
+        "scripting",
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/*"
+            ],
+            "js": [
+                "./scripts/content.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "index.html"
+    },
+    "host_permissions": [
+        "https://www.youtube.com/*"
+    ]
+}
